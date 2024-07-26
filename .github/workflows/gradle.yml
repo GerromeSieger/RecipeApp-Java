@@ -28,17 +28,16 @@ jobs:
 
     - name: Configure build.gradle
       run: |
-          ls -a
-    #     sed -i 's/sourceCompatibility = .*/sourceCompatibility = "17"/' build.gradle
-    #     sed -i 's/targetCompatibility = .*/targetCompatibility = "17"/' build.gradle
-    #     sed -i '/plugins {/a\    id "org.springframework.boot" version "3.0.4"\n    id "io.spring.dependency-management" version "1.1.0"' build.gradle
-    #     sed -i '/dependencies {/a\    implementation "org.springframework.boot:spring-boot-starter-web"\n    implementation "org.springframework.boot:spring-boot-starter-data-jpa"' build.gradle
+        sed -i 's/sourceCompatibility = .*/sourceCompatibility = "17"/' build.gradle.kts
+        sed -i 's/targetCompatibility = .*/targetCompatibility = "17"/' build.gradle.kts
+        sed -i '/plugins {/a\    id "org.springframework.boot" version "3.0.4"\n    id "io.spring.dependency-management" version "1.1.0"' build.gradle.kts
+        sed -i '/dependencies {/a\    implementation "org.springframework.boot:spring-boot-starter-web"\n    implementation "org.springframework.boot:spring-boot-starter-data-jpa"' build.gradle.kts
 
-    # - name: Build with Gradle Wrapper
-    #   run: ./gradlew build
+    - name: Build with Gradle Wrapper
+      run: ./gradlew build
 
-    # - name: Upload JAR
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: app
-    #     path: build/libs/*.jar
+    - name: Upload JAR
+      uses: actions/upload-artifact@v2
+      with:
+        name: app
+        path: build/libs/*.jar
